@@ -1,0 +1,487 @@
+/*
+ * jupyter-notebook-simple-review – base styles
+ *
+ * All classes are prefixed with `snr-` (simple notebook review) to avoid
+ * collisions with JupyterLab's own CSS.
+ */
+
+/* ── Toolbar button container ───────────────────────────────────────────────── */
+
+.snr-toolbar-container {
+  display: flex;
+  align-items: center;
+}
+
+/* ── Toolbar button ─────────────────────────────────────────────────────────── */
+
+.snr-toolbar-btn {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: var(--jp-ui-font-color1, #333);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 6px;
+  transition: all 0.15s ease;
+  min-width: 28px;
+  min-height: 24px;
+  justify-content: center;
+}
+
+.snr-toolbar-btn:hover {
+  background: var(--jp-layout-color2, #eeeeee);
+  border-color: var(--jp-border-color1, #bdbdbd);
+}
+
+.snr-toolbar-btn.snr-active {
+  background: var(--jp-brand-color1, #1976d2);
+  border-color: var(--jp-brand-color1, #1976d2);
+  color: #fff;
+}
+
+.snr-btn-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.snr-btn-badge {
+  font-size: 10px;
+  font-weight: 600;
+  background: var(--jp-error-color1, #f44336);
+  color: #fff;
+  border-radius: 8px;
+  padding: 0 4px;
+  min-width: 14px;
+  text-align: center;
+}
+
+.snr-toolbar-btn.snr-active .snr-btn-badge {
+  background: #fff;
+  color: var(--jp-brand-color1, #1976d2);
+}
+
+/* ── Cell wrapper ────────────────────────────────────────────────────────── */
+
+.snr-cell-comment-wrapper {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--jp-border-color2, #e0e0e0);
+  margin-top: 4px;
+  padding: 8px 12px;
+}
+
+.snr-cell-comment-wrapper.snr-hidden {
+  display: none;
+}
+
+/* ── Comment panel ───────────────────────────────────────────────────────── */
+
+.snr-comment-panel {
+  margin-top: 6px;
+}
+
+/* ── Comment widget host ─────────────────────────────────────────────────── */
+
+.snr-comment-widget {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ── Comment card ────────────────────────────────────────────────────────── */
+
+.snr-comment-card {
+  background: var(--jp-layout-color0, #ffffff);
+  border: 1px solid var(--jp-border-color1, #bdbdbd);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color 0.15s ease;
+}
+
+.snr-comment-card.snr-resolved {
+  border-color: var(--jp-success-color1, #4caf50);
+  opacity: 0.85;
+}
+
+/* Body is hidden when the card is collapsed */
+.snr-comment-card.snr-collapsed .snr-comment-body {
+  display: none;
+}
+
+/* ── Card header ─────────────────────────────────────────────────────────── */
+
+.snr-comment-header {
+  align-items: center;
+  background: var(--jp-layout-color2, #f5f5f5);
+  border-bottom: 1px solid var(--jp-border-color2, #e0e0e0);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 4px 8px;
+}
+
+.snr-comment-card.snr-collapsed .snr-comment-header {
+  border-bottom: none;
+}
+
+.snr-comment-meta {
+  color: var(--jp-ui-font-color1, #333);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.snr-comment-timestamp {
+  color: var(--jp-ui-font-color2, #757575);
+  font-size: 0.75rem;
+  margin-left: auto;
+}
+
+.snr-resolved-badge {
+  background: var(--jp-success-color1, #4caf50);
+  border-radius: 4px;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 1px 6px;
+}
+
+/* ── Card body ───────────────────────────────────────────────────────────── */
+
+.snr-comment-body {
+  padding: 8px;
+}
+
+.snr-comment-text {
+  color: var(--jp-ui-font-color1, #333);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin: 0 0 8px 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ── Card actions ────────────────────────────────────────────────────────── */
+
+.snr-comment-actions {
+  display: flex;
+  gap: 6px;
+}
+
+/* ── Action icon buttons (Reply, Resolve, Delete) ────────────────────────── */
+
+.snr-btn-action-icon {
+  background: none;
+  border: 1px solid var(--jp-border-color1, #bdbdbd);
+  border-radius: 4px;
+  color: var(--jp-ui-font-color2, #757575);
+  cursor: pointer;
+  font-size: 0.85rem;
+  line-height: 1;
+  padding: 2px 6px;
+  transition: all 0.15s ease;
+}
+
+.snr-btn-action-icon:hover {
+  color: var(--jp-ui-font-color1, #333);
+  background: var(--jp-layout-color2, #eeeeee);
+}
+
+.snr-btn-action-icon.snr-btn-action-icon-danger {
+  border-color: var(--jp-error-color1, #f44336);
+  color: var(--jp-error-color1, #f44336);
+}
+
+.snr-btn-action-icon.snr-btn-action-icon-danger:hover {
+  background: rgba(244, 67, 54, 0.08);
+}
+
+/* ── Comment thread (top-level comment + replies) ────────────────────────── */
+
+.snr-comment-thread {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Replies container with vertical line ────────────────────────────────── */
+
+.snr-replies-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-left: 16px;
+  padding-left: 12px;
+  padding-top: 6px;
+  border-left: 2px solid var(--jp-border-color1, #bdbdbd);
+}
+
+.snr-replies-container.snr-hidden {
+  display: none;
+}
+
+/* ── Reply wrapper with horizontal connector line ────────────────────────── */
+
+.snr-reply-wrapper {
+  position: relative;
+  margin-left: 8px;
+}
+
+.snr-reply-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  left: -20px;
+  width: 12px;
+  height: 0;
+  border-top: 2px solid var(--jp-border-color1, #bdbdbd);
+}
+
+/* ── Reply card (smaller width, right-aligned) ──────────────────────────── */
+
+.snr-reply-card {
+  max-width: 90%;
+  margin-left: auto;
+}
+
+/* ── Reply form ─────────────────────────────────────────────────────────── */
+
+.snr-reply-form {
+  background: var(--jp-layout-color0, #ffffff);
+  border: 1px dashed var(--jp-border-color1, #bdbdbd);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px;
+  max-width: 90%;
+  margin-left: auto;
+}
+
+/* ── Collapse / expand button ────────────────────────────────────────────── */
+
+.snr-collapse-btn {
+  background: none;
+  border: none;
+  color: var(--jp-ui-font-color2, #757575);
+  cursor: pointer;
+  font-size: 0.7rem;
+  line-height: 1;
+  padding: 0 2px;
+}
+
+.snr-collapse-btn:hover {
+  color: var(--jp-ui-font-color1, #333);
+}
+
+/* ── Generic button styles ───────────────────────────────────────────────── */
+
+.snr-btn {
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.78rem;
+  padding: 2px 10px;
+  transition: opacity 0.1s ease;
+}
+
+.snr-btn:hover {
+  opacity: 0.85;
+}
+
+.snr-btn-primary {
+  background: var(--jp-brand-color1, #1976d2);
+  border: none;
+  color: #fff;
+}
+
+.snr-btn-secondary {
+  background: none;
+  border: 1px solid var(--jp-border-color1, #bdbdbd);
+  color: var(--jp-ui-font-color1, #333);
+}
+
+.snr-btn-danger {
+  background: none;
+  border: 1px solid var(--jp-error-color1, #f44336);
+  color: var(--jp-error-color1, #f44336);
+}
+
+/* ── Add-comment form ────────────────────────────────────────────────────── */
+
+.snr-add-form {
+  background: var(--jp-layout-color0, #ffffff);
+  border: 1px dashed var(--jp-border-color1, #bdbdbd);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+}
+
+.snr-input-row {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.snr-input-right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: flex-start;
+}
+
+.snr-btn-add {
+  background: var(--jp-brand-color1, #1976d2);
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.1s ease;
+}
+
+.snr-btn-add:hover {
+  opacity: 0.85;
+}
+
+.snr-emoji-select {
+  background: var(--jp-layout-color0, #ffffff);
+  border: 1px solid var(--jp-border-color1, #bdbdbd);
+  border-radius: 4px;
+  color: var(--jp-ui-font-color1, #333);
+  font-size: 1rem;
+  padding: 2px 4px;
+  width: 48px;
+  text-align: center;
+  text-align-last: center;
+}
+
+.snr-comment-input {
+  background: var(--jp-layout-color0, #ffffff);
+  border: 1px solid var(--jp-border-color1, #bdbdbd);
+  border-radius: 4px;
+  color: var(--jp-ui-font-color1, #333);
+  font-family: var(--jp-ui-font-family, sans-serif);
+  font-size: 0.85rem;
+  padding: 6px 8px;
+  resize: vertical;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.snr-comment-input:focus {
+  border-color: var(--jp-brand-color1, #1976d2);
+  outline: none;
+}
+
+/* ── Legacy toggle button (kept for backwards compatibility) ─────────────── */
+
+.snr-toggle-btn {
+  align-self: flex-start;
+  background: none;
+  border: 1px solid var(--jp-border-color1, #bdbdbd);
+  border-radius: 4px;
+  color: var(--jp-ui-font-color1, #333);
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 2px 8px;
+  transition: background 0.15s ease;
+}
+
+.snr-toggle-btn:hover {
+  background: var(--jp-layout-color2, #eeeeee);
+}
+
+/* ── Selected text indicator in comment card ────────────────────────────────── */
+
+.snr-selected-text-container {
+  background: var(--jp-warn-color3, #fff8e1);
+  border-left: 3px solid var(--jp-warn-color1, #ff9800);
+  border-radius: 2px;
+  margin-bottom: 8px;
+  padding: 4px 8px;
+}
+
+.snr-selected-text-label {
+  color: var(--jp-ui-font-color2, #757575);
+  font-size: 0.75rem;
+}
+
+.snr-selected-text-quote {
+  color: var(--jp-ui-font-color1, #333);
+  font-family: var(--jp-code-font-family, monospace);
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+/* ── Selection preview in add comment form ──────────────────────────────────── */
+
+.snr-selection-preview {
+  align-items: center;
+  background: var(--jp-warn-color3, #fff8e1);
+  border-left: 3px solid var(--jp-warn-color1, #ff9800);
+  border-radius: 2px;
+  display: flex;
+  gap: 6px;
+  padding: 4px 8px;
+}
+
+.snr-selection-preview.snr-hidden {
+  display: none;
+}
+
+.snr-selection-label {
+  color: var(--jp-ui-font-color2, #757575);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.snr-selection-text {
+  color: var(--jp-ui-font-color1, #333);
+  flex: 1;
+  font-family: var(--jp-code-font-family, monospace);
+  font-size: 0.8rem;
+  font-style: italic;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.snr-btn-clear-selection {
+  background: none;
+  border: none;
+  color: var(--jp-ui-font-color2, #757575);
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0 4px;
+}
+
+.snr-btn-clear-selection:hover {
+  color: var(--jp-error-color1, #f44336);
+}
+
+/* ── Comment card with selection indicator ──────────────────────────────────── */
+
+.snr-comment-card.snr-has-selection {
+  border-left: 3px solid var(--jp-warn-color1, #ff9800);
+}
+
+.snr-comment-card.snr-has-selection .snr-comment-header {
+  background: var(--jp-warn-color3, #fff8e1);
+}
+
+/* ── Text highlight styles for commented content in CodeMirror ──────────────── */
+
+.snr-highlight {
+  background-color: rgba(255, 152, 0, 0.3);
+  border-bottom: 2px solid var(--jp-warn-color1, #ff9800);
+}

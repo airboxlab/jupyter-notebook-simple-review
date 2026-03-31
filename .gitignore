@@ -1,0 +1,36 @@
+# Build artifacts
+lib/
+node_modules/
+*.tsbuildinfo
+# NOTE: labextension/ is NOT ignored - prebuilt assets are committed for easier installation
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+.eggs/
+*.egg
+
+# Coverage
+.coverage
+coverage/
+.nyc_output/
+
+# Caches
+.eslintcache
+.stylelintcache
+.pytest_cache/
+
+# Misc
+.DS_Store
+*.log
+.yarn/
+.yarnrc.yml
+*.ipynb
+yarn.lock
+.idea/
+.ipynb_checkpoints/
+.jupyter_ystore.db
+.pnp.cjs
+.pnp.loader.mjs

@@ -1,0 +1,69 @@
+[build-system]
+requires = ["hatchling>=1.5.0", "jupyterlab>=4.0.0,<5"]
+build-backend = "hatchling.build"
+
+[project]
+name = "jupyter-notebook-simple-review"
+version = "0.1.0"
+description = "A simple review process for Jupyter Notebooks based on comments"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+classifiers = [
+    "Framework :: Jupyter",
+    "Framework :: Jupyter :: JupyterLab",
+    "Framework :: Jupyter :: JupyterLab :: 4",
+    "Framework :: Jupyter :: JupyterLab :: Extensions",
+    "Framework :: Jupyter :: JupyterLab :: Extensions :: Prebuilt",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/airboxlab/jupyter-notebook-simple-review"
+Repository = "https://github.com/airboxlab/jupyter-notebook-simple-review.git"
+Issues = "https://github.com/airboxlab/jupyter-notebook-simple-review/issues"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/jupyter_notebook_simple_review",
+    "/src",
+    "/style",
+    "/package.json",
+    "/install.json",
+    "/tsconfig.json",
+]
+exclude = [
+    "/.github",
+]
+
+[tool.hatch.build.targets.wheel.shared-data]
+"jupyter_notebook_simple_review/labextension" = "share/jupyter/labextensions/jupyter-notebook-simple-review"
+"install.json" = "share/jupyter/labextensions/jupyter-notebook-simple-review/install.json"
+
+[tool.hatch.build.hooks.version]
+path = "jupyter_notebook_simple_review/_version.py"
+
+[tool.hatch.build.hooks.jupyter-builder]
+dependencies = ["hatch-jupyter-builder>=0.5"]
+build-function = "hatch_jupyter_builder.npm_builder"
+ensured-targets = [
+    "jupyter_notebook_simple_review/labextension/static/style.js",
+    "jupyter_notebook_simple_review/labextension/package.json",
+]
+skip-if-exists = ["jupyter_notebook_simple_review/labextension/static/style.js"]
+
+[tool.hatch.build.hooks.jupyter-builder.build-kwargs]
+build_cmd = "build:prod"
+npm = ["jlpm"]
+
+[tool.hatch.build.hooks.jupyter-builder.editable-build-kwargs]
+build_cmd = "install:extension"
+npm = ["jlpm"]
+source_dir = "src"
+build_dir = "jupyter_notebook_simple_review/labextension"
