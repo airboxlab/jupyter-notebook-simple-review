@@ -37,7 +37,7 @@ import { applyHighlights, findEditorView } from "./highlight";
 // In production you should replace '*' with explicit allowed origins such as
 // 'https://my-host.example.com'.  An empty array disables iframe identity.
 // ---------------------------------------------------------------------------
-const ALLOWED_ORIGINS: string[] = [];
+const ALLOWED_ORIGINS: string[] = ["*"];
 
 /**
  * Namespace for the session-level reviewer identity.
